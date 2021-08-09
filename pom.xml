@@ -10,6 +10,13 @@
     <!--表示项目为 总的父工程-->
     <packaging>pom</packaging>
 
+
+    <!--添加一个子模块-->
+    <modules>
+        <module>cloud-provider-payment8001</module>
+    </modules>
+
+
     <!-- 统一管理jar包版本 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +28,7 @@
         <mysql.version>8.0.21</mysql.version>
         <druid.version>1.1.16</druid.version>
         <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+        <druid.spring.boot.starter.version>1.1.10</druid.spring.boot.starter.version>
     </properties>
 
     <!-- 子模块继承之后，提供作用：锁定版本+子modlue不用写groupId和version  -->
@@ -49,6 +57,12 @@
                 <version>2.1.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.spring.boot.starter.version}</version>
             </dependency>
 
             <dependency>

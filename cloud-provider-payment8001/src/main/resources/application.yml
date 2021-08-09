@@ -1,0 +1,23 @@
+# 设置端口号
+server:
+  port: 8001
+
+
+# 设置模块名称
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql 8.0 驱动包
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #  数据库连接 记得加时区和ssl
+    url: jdbc:mysql://127.0.0.1:3306/db2019?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 13666
+
+# 整合mybatis
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.yyesw.springcloud.entities
