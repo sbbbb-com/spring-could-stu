@@ -41,15 +41,17 @@ public class PaymentController {
 
 
     @GetMapping(value = "/payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id")Long id){
+    public CommonResult<Payment> getPaymentById(@PathVariable("id")Long id){
 
         Payment result = paymentService.getPaymentById(id);
-        log.info("返回查询返回数据消息为：：【{}】",result);
+        log.info("返回查询返回数据消息为：：【{}】!！",result);
+
+        int age=10/2;
 
         if (result!=null){
             return new CommonResult(200,"查询成功",result);
         }else {
-            return new CommonResult(444,"没有对应id为【"+id+"】的记录",null);
+            return new CommonResult(444,"没有对应id为【"+id+"】的记录！！",null);
         }
     }
 }

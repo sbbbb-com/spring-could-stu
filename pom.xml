@@ -99,7 +99,10 @@
         </dependencies>
     </dependencyManagement>
 
+
+    <!--添加热部署插件-->
     <build>
+        <finalName>cloud2020</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
