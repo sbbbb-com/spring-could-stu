@@ -17,6 +17,14 @@
     </properties>
 
     <dependencies>
+
+        <!--引入自定义打包公共api包  可以使用payment的支付entity包中内容 -->
+        <dependency>
+            <groupId>com.yyesw.springcloud</groupId>
+            <artifactId>cloud-api-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
