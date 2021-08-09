@@ -3,6 +3,7 @@ package com.yyesw.springcloud.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * <br/>Time: 15:57
  */
 
+@ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

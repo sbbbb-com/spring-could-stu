@@ -5,10 +5,7 @@ import com.yyesw.springcloud.entities.Payment;
 import com.yyesw.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -26,8 +23,17 @@ public class PaymentController {
     private PaymentService paymentService;
 
 
+    /**
+     *
+     * @param payment @RequestBody注解指示方法参数的注释应绑定到 Web 请求的正文。
+     *                请求的正文通过HttpMessageConverter传递，以根据请求的内容类型解析方法参数。
+     *                或者，可以通过使用@Valid注释参数来应用自动验证。
+     *                同时加上这个注解后接收的是json格式的数据 可以使用postman测试
+     *                【原因 post请求默认发送的格式是json格式的对象 所以后端必须加@RequestBody注解接收】
+     * @return
+     */
     @PostMapping(value = "/payment/create")
-    public CommonResult create(Payment payment){
+    public CommonResult create(@RequestBody Payment payment){
 
         int result = paymentService.create(payment);
         log.info("成功插入数据{}条",result);
