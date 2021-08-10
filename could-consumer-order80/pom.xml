@@ -17,6 +17,12 @@
     </properties>
 
     <dependencies>
+        <!--eureka-client 客户端包引入-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka-server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
         <!--引入自定义打包公共api包  可以使用payment的支付entity包中内容 -->
         <dependency>

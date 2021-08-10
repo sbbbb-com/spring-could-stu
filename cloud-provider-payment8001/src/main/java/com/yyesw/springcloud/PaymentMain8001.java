@@ -2,6 +2,7 @@ package com.yyesw.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * 主启动类
  */
 
+@EnableEurekaClient   /*添加client端的注解*/
 @SpringBootApplication
 public class PaymentMain8001 {
 
