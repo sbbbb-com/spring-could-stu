@@ -1,0 +1,32 @@
+# 设置端口号
+server:
+  port: 8002
+
+# 设置模块名称
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql 8.0 驱动包
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #  数据库连接 记得加时区和ssl
+    url: jdbc:mysql://127.0.0.1:3306/db2019?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 13666
+
+#  eureka 客户端的配置文件
+eureka:
+  client:
+    # 表示是否将自己注册到EurekaServer 默认为 true
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
+
+# 整合mybatis
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.yyesw.springcloud.entities

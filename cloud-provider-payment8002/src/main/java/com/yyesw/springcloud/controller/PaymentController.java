@@ -4,7 +4,6 @@ import com.yyesw.springcloud.entities.CommonResult;
 import com.yyesw.springcloud.entities.Payment;
 import com.yyesw.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +43,7 @@ public class PaymentController {
         if (result>0){
             return new CommonResult(200,"插入数据库成功,服务端口号为"+serverPort,result);
         }else {
-            return new CommonResult(444,"插入数据库失败,服务端口号为"+serverPort,null);
+            return new CommonResult(444,"插入数据库失败",null);
         }
     }
 
@@ -53,7 +52,7 @@ public class PaymentController {
     public CommonResult<Payment> getPaymentById(@PathVariable("id")Long id){
 
         Payment result = paymentService.getPaymentById(id);
-        log.info("返回查询返回数据消息为：：【{}】!！,服务端口号为{}",result,serverPort);
+        log.info("返回查询返回数据消息为：：【{}】!！",result);
 
         int age=10/2;
 
