@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  * <br/>Time: 18:04
  */
 
-@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MySelfRule.class)
+//@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MySelfRule.class)
 @EnableEurekaClient
 @SpringBootApplication
 public class OrderMain80 {

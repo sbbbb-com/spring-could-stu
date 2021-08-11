@@ -62,4 +62,10 @@ public class PaymentController {
             return new CommonResult(444,"没有对应id为【"+id+"】的记录！！",null);
         }
     }
+
+    @GetMapping("/payment/lb")
+    public String getPaymentLB(){
+
+        return serverPort;
+    }
 }
