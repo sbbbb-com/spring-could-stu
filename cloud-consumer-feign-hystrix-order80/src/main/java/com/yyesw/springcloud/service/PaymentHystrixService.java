@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 
 @Component
-@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT")
+@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT",
+            fallback = PaymentFallbackService.class/*降价方法的返回值类型必须与需要降价的方法一致*/)
 public interface PaymentHystrixService {
 
     @GetMapping("/payment/hystrix/ok/{id}")
