@@ -22,3 +22,4 @@ logging:
     # feign日志以什么级别监控那个接口
     com.yyesw.springcloud.service.PaymentFeignService: debug
 
+# hystrix
