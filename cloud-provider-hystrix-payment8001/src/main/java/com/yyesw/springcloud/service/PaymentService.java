@@ -30,19 +30,18 @@ public class PaymentService {
 
 
     @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler",commandProperties ={
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")  //3秒钟以内就是正常的业务逻辑
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "5000")  //3秒钟以内就是正常的业务逻辑
     } )
     public String paymentInfo_TimeOut(Integer id){
 
-        int timeNumber=4;
-
+        int timeNumber=3;
         //暂停几秒钟
-        int a=0/0;
-       /* try {
+        //int a=0/0;
+        try {
             TimeUnit.SECONDS.sleep(timeNumber);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
         return "线程池： "+Thread.currentThread().getName()+
                 "=== paymentInfo_TimeOut,id: "+id+"\t ！！w(ﾟДﾟ)w！！！耗时"+timeNumber+"秒钟";
@@ -52,6 +51,6 @@ public class PaymentService {
     public String paymentInfo_TimeOutHandler(Integer id){
 
         return "线程池： "+Thread.currentThread().getName()+
-                "=== paymentInfo_TimeOutHandler,id: "+id+"\t <h1>系统繁忙或者运行报错 请稍后再试</h1>::>_<::~~~~(>_<)~~~~";
+                "=== paymentInfo_TimeOutHandler,id: "+id+"\t <h1>8001 系统繁忙或者运行报错 请稍后再试</h1>::>_<::~~~~(>_<)~~~~";
     }
 }
