@@ -28,6 +28,7 @@
         <module>cloud-consumer-feign-hystrix-order80</module>
         <module>cloud-consumer-hystrix-dashboard9001</module>
         <module>cloud-gateway-gateway9527</module>
+        <module>loud-config-center-3344</module>
     </modules>
 
 
