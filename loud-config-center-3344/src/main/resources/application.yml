@@ -14,7 +14,9 @@ spring:
 #          password: ***********
           #############
 
-      label: main
+      label:
+        - main
+        - dev
 eureka:
   client:
     service-url:
