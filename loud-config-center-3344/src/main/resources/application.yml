@@ -38,3 +38,6 @@ management:
       exposure:
         include: 'bus-refresh'
 
+## 同上 但是 发送curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
+##    后面/【微服务名称】：【端口号名称】 可以对单台机器进行更新 而不是更新所有的机器
+
