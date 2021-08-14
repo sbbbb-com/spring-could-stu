@@ -14,22 +14,22 @@ spring:
 #          username: 17719357702@163.com
 #          password: ***********
           #############
-
       label:
         - main
         - dev
         #- master
+
+####### #添加rabbitmq的配置#######
+  rabbitmq:
+      host: 192.168.226.135
+      port: 5672
+      username: admin
+      password: 123
 eureka:
   client:
     service-url:
       defaultZone:  http://localhost:7001/eureka
 
-  #添加rabbitmq的配置
-rabbitmq:
-  host: localhost
-  port: 5672
-  username: admin
-  password: 123
 
 ##  rabbitmq 相关配置 暴露bus刷新配置的端点
 management:
