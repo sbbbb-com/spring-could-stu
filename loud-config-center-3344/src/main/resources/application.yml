@@ -7,7 +7,8 @@ spring:
     config:
       server:
         git:
-          uri:  https://github.com/sbbbb-com/springcloud-config.git
+#          uri:  https://github.com/sbbbb-com/springcloud-config.git
+          uri:  https://gitee.com/one_one_root/springcloud-config.git
           search-paths:
             - springcloud-config
 #          username: 17719357702@163.com
@@ -15,7 +16,7 @@ spring:
           #############
 
       label:
-#        - main
+        - main
         - dev
         #- master
 eureka:
