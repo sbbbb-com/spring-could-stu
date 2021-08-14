@@ -15,8 +15,9 @@ spring:
           #############
 
       label:
-        - main
+#        - main
         - dev
+        #- master
 eureka:
   client:
     service-url:
