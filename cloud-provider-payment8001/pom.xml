@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+        <!--包含了sleuth+zipkin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
 
         <!--引入自定义打包公共api包  可以使用payment的支付entity包中内容 -->
         <dependency>

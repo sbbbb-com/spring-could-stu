@@ -91,4 +91,10 @@ public class OrderController {
 
         return restTemplate.getForObject(uri+"/payment/lb",String.class);
     }
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin()
+    {
+        return "hi ,i'am paymentzipkin server fall back，welcome to yyesw，O(∩_∩)O哈哈~";
+    }
 }
