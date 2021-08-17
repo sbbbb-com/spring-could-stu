@@ -23,7 +23,6 @@ public class ConfigClientController {
 
     @GetMapping("/config/info")
     public String getConfigInfo() {
-        log.info("进入：：ConfigClientController！！");
         return configInfo;
     }
 
