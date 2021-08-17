@@ -32,7 +32,12 @@ public class CircleBreakerController {
 
     @RequestMapping("/consumer/fallback/{id}")
     //@SentinelResource(value = "fallback") //没有配置
-    @SentinelResource(value = "fallback",fallback = "handlerFallback")
+    //@SentinelResource(value = "fallback",fallback = "handlerFallback") //只配置 fallback  负责业务异常
+    //@SentinelResource(value = "fallback",blockHandler = "blockHandler")  //只配置 blockHandler 负责控sentinel控制台的配置违规
+    @SentinelResource(value = "fallback",
+            fallback = "handlerFallback",
+            blockHandler = "blockHandler")/*若blopkHandler和fallback都进行了配置，
+                                            则被限流降级而抛出BlockException时只会进入blockHandler处理逻辑。*/
     public CommonResult<Payment> fallback(@PathVariable Long id) {
         CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/"+id, CommonResult.class,id);
 
