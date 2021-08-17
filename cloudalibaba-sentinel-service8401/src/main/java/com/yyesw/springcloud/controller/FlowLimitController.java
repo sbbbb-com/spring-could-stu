@@ -58,6 +58,7 @@ public class FlowLimitController {
     public String testHotkey(@RequestParam(value = "p1",required = false)String p1,
                              @RequestParam(value = "p2",required = false)String p2){
 
+        int a=0/0;
         return "---------------testHotkeyO(∩_∩)O~";
     }
 
