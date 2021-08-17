@@ -4,7 +4,9 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.yyesw.springcloud.entities.CommonResult;
 import com.yyesw.springcloud.entities.Payment;
+import com.yyesw.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,8 +38,10 @@ public class CircleBreakerController {
     //@SentinelResource(value = "fallback",blockHandler = "blockHandler")  //只配置 blockHandler 负责控sentinel控制台的配置违规
     @SentinelResource(value = "fallback",
             fallback = "handlerFallback",
-            blockHandler = "blockHandler")/*若blopkHandler和fallback都进行了配置，
+            blockHandler = "blockHandler",
+            exceptionsToIgnore = {IllegalArgumentException.class})/*若blopkHandler和fallback都进行了配置，
                                             则被限流降级而抛出BlockException时只会进入blockHandler处理逻辑。*/
+    /*exceptionsToIgnore = {IllegalArgumentException.class}) 若配置此属性 不再有fallback方法兜底，没有降级效果了*/
     public CommonResult<Payment> fallback(@PathVariable Long id) {
         CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/"+id, CommonResult.class,id);
 
@@ -50,16 +54,27 @@ public class CircleBreakerController {
         return result;
     }
 
-    //fallback
+    //本例是fallback
     public CommonResult handlerFallback(@PathVariable  Long id,Throwable e) {
         Payment payment = new Payment(id,"null");
         return new CommonResult<>(444,"兜底异常handlerFallback,exception内容  "+e.getMessage(),payment);
     }
 
-    //blockHandler
+    //本例是blockHandler
     public CommonResult blockHandler(@PathVariable  Long id,BlockException blockException) {
         Payment payment = new Payment(id,"null");
         return new CommonResult<>(445,"blockHandler-sentinel限流,无此流水: blockException  "+blockException.getMessage(),payment);
     }
+
+    // =======================OpenFeign===========
+    @Resource
+    private PaymentService paymentService;
+
+    @GetMapping(value = "/consumer/paymentSQL/{id}")
+    public CommonResult<Payment> paymentSQL(@PathVariable("id")Long id){
+        CommonResult<Payment> paymentCommonResult = paymentService.paymentSQL(id);
+        return paymentCommonResult;
+    }
+
 
 }
