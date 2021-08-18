@@ -30,7 +30,7 @@ public class RateLimitController {
         return new CommonResult(444,exception.getClass().getCanonicalName()+"：：服务不可以");
     }
 
-    @GetMapping("/rateLimit/byUrl")
+    @GetMapping("/retaLimit/byUrl")
     @SentinelResource(value = "byUrl")
     public CommonResult byUrl(){
 
